@@ -1,0 +1,76 @@
+body {
+    background: #ffc600;
+}
+
+.container {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+.moveButton {
+    display: inline-block;
+}
+
+.board {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    margin: 20px auto;
+    width: 70%;
+    max-width: 70%;
+    border-radius: 5px;
+    box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.1);
+    background: white;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    margin: 0.5px;
+}
+
+.highlight{
+    display: flex;
+    flex: 1;
+    align-content: center;
+    justify-content: center;
+    padding: 5px;
+    border: 1px solid #ff0000;
+}
+
+.rack {
+    margin-top: 5px;
+}
+
+.tile {
+    display: flex;
+    flex: 1;
+    border: 1px solid #d1e2ff;
+    align-content: center;
+    justify-content: center;
+    padding: 5px;
+}
+
+.notification {
+    display: inline-block;
+    margin: 5px auto;
+}
+
+.controlButtons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    width: 70%;
+    max-width: 70%;
+    margin: 5px auto;
+}
+
+.controlButtons > div {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
