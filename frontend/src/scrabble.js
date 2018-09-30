@@ -126,7 +126,7 @@ class Scrabble extends Component {
         <div className="controlButtons">
           <div>
           <button className="moveButton" onClick={this.getTheBestMove}>
-            Genereate Move
+            Generate Move
           </button>
           </div>
           <div>
@@ -136,7 +136,7 @@ class Scrabble extends Component {
           </div>
         </div>
         {
-            isLoading ? <div className="notification"> Waiting for the move </div> : null
+          isLoading ? <div className="notification"> Waiting for the move </div> : null
         }
       </div>
     );

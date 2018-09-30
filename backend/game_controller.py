@@ -4,6 +4,7 @@ from utility import read_dictionary
 import numpy as np
 dictionary = read_dictionary()
 
+
 class GameController(Resource):
     def post(self):
         parser = reqparse.RequestParser()
