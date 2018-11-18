@@ -2,6 +2,7 @@ from flask_restful import Resource, reqparse
 from move_generation import generate_all_moves
 from utility import read_dictionary
 import numpy as np
+from constants import BAG
 dictionary = read_dictionary()
 
 
@@ -16,3 +17,6 @@ class GameController(Resource):
         board = np.array(board)
         all_moves = generate_all_moves(board, rack, dictionary)
         return {"response": all_moves}
+    
+    def get(self):
+        return {"response": BAG}
