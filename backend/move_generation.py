@@ -7,8 +7,10 @@ from utility import common_letters, word_after_anchor, calculate_score
 from utility import is_whole_permutation_valid
 
 
-def generate_move_row(board, row, rack, dictionary):
+def generate_move_row(board, row, rack, is_first_move, dictionary):
     anchor_positions = get_anchor_positions(board, row)
+    if(row == 7 and is_first_move):
+        anchor_positions.append(6)
     allowed_letters = cross_checks(board, row, dictionary)
     # print allowed_letters
     for i in range(len(allowed_letters)):
@@ -72,23 +74,23 @@ def generate_move_row(board, row, rack, dictionary):
     return (max_anchor_position, max_left_word, max_existing_word, max_right_word, max_score)
 
 
-def generate_move_for_all_rows(board, rack, dictionary):
-    print board
+def generate_move_for_all_rows(board, rack, is_first_move, dictionary):
+    print board, rack
     all_moves_rows = []
     for row in range(len(board)):
-        best_move_for_row = generate_move_row(board, row, rack, dictionary)
+        best_move_for_row = generate_move_row(board, row, rack, is_first_move, dictionary)
         all_moves_rows.append(best_move_for_row)
         print "Best move for row", row, "is", best_move_for_row
     return all_moves_rows
 
 
-def generate_all_moves(board, rack, dictionary):
+def generate_all_moves(board, rack, is_first_move, dictionary):
     all_moves = []
     print "Moves for all the rows"
-    all_moves.append(generate_move_for_all_rows(board, rack, dictionary))
+    all_moves.append(generate_move_for_all_rows(board, rack, is_first_move, dictionary))
     print "Moves for all the columns"
     board_transpose = np.transpose(board)
-    all_moves.append(generate_move_for_all_rows(board_transpose, rack, dictionary))
+    all_moves.append(generate_move_for_all_rows(board_transpose, rack, is_first_move, dictionary))
     best_score = -1
     best_move = None
     for i in range(len(all_moves)):
@@ -105,7 +107,8 @@ def generate_all_moves(board, rack, dictionary):
         "anchor_position": best_move[2][0],
         "left_word": best_move[2][1],
         "existing_word": best_move[2][2],
-        "right_word": best_move[2][3]
+        "right_word": best_move[2][3],
+        "best_score": best_score,
     }
     return response
 
